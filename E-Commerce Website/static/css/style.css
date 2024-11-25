@@ -1,0 +1,44 @@
+/* static/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+}
+
+h2, h3 {
+    color: #f1c40f; /* Yellow */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+button, input[type="submit"] {
+    background-color: #f1c40f; /* Yellow */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #d4ac0d;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #f1c40f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

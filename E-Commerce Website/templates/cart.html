@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="cart-container">
+    <h3>Your Cart</h3>
+
+    {% if cart_items %}
+    <ul class="cart-list">
+        {% for item in cart_items %}
+        <li class="cart-item">
+            <span class="item-name">{{ item['Name'] }}</span>
+            <span class="item-price">${{ item['Price'] }} x {{ item['Quantity'] }}</span>
+            <span class="item-total">= ${{ item['Price'] * item['Quantity'] }}</span>
+            <a class="btn-secondary" href="{{ url_for('remove_from_cart', cart_id=item['CartID']) }}">Remove</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="cart-total">
+        <h3>Total: ${{ total_amount }}</h3>
+    </div>
+
+    <a class="btn" href="{{ url_for('checkout') }}">Checkout</a>
+
+    {% else %}
+    <p>Your cart is currently empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+<style>
+    .cart-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .cart-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #f1c40f;
+    }
+
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+
+    .item-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        flex: 2;
+        color: #333;
+    }
+
+    .item-price, .item-total {
+        font-size: 1rem;
+        color: #666;
+        flex: 1;
+        text-align: right;
+    }
+
+    .btn-secondary {
+        background-color: #fff;
+        color: #f1c40f;
+        border: 2px solid #f1c40f;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-secondary:hover {
+        background-color: #f1c40f;
+        color: #fff;
+    }
+
+    .cart-total {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #f39c12;
+    }
+
+    .btn {
+        background-color: #f1c40f;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn:hover {
+        background-color: #d4ac0d;
+    }
+</style>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Product Catalog</h3>
+<ul>
+    {% for product in products %}
+    <li>{{ product['Name'] }} - ${{ product['Price'] }}
+        <form method="POST" action="{{ url_for('add_to_cart', product_id=product['ProductID']) }}">
+            <button type="submit">Add to Cart</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('view_cart') }}">View Cart</a>
+{% endblock %}
